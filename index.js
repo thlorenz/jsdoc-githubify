@@ -2,8 +2,9 @@
 
 var stream = require('stream');
 var util = require('util');
+var adaptLinks = require('./lib/adapt-links');
 
-var Transform = stream.Transform;
+var Transform = stream.Transform || require('readable-stream').Transform;
 
 module.exports = function (file /* not used */) {
   return new GitifyTransform();
@@ -26,11 +27,18 @@ GitifyTransform.prototype._transform = function (chunk, encoding, cb) {
 };
 
 GitifyTransform.prototype._flush = function (cb) {
-  var lines = this.original.split('\n');
-  var transformedLines = lines
-    .filter(function (x) { return x.trim().length })
-    .map(function (x) { return x.replace(/^\s+/, '') })
+  var self = this;
 
-  this.push(transformedLines.join('\n'));
-  cb();
+  var lines = this.original.split('\n');
+  
+  // trim lines and remove empties
+  var transformedLines = lines
+    .map(function (x) { return x.trim() })
+    .filter(function (x) { return x.length })
+
+  adaptLinks(transformedLines.join('\n'), function (err, html) {
+    if (err) return cb(err);
+    self.push(html);
+    cb();
+  });
 };

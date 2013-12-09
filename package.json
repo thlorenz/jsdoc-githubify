@@ -18,7 +18,9 @@
   "dependencies": {
     "resolve-git-remote": "~0.1.1",
     "resolve-git-branch": "~0.1.0",
-    "asyncreduce": "~0.1.4"
+    "asyncreduce": "~0.1.4",
+    "cheerio": "~0.12.4",
+    "readable-stream": "~1.1.9"
   },
   "devDependencies": {
     "nave": "~0.4.3",
