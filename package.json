@@ -15,7 +15,11 @@
     "url": "git://github.com/thlorenz/jsdoc-githubify.git"
   },
   "homepage": "https://github.com/thlorenz/jsdoc-githubify",
-  "dependencies": {},
+  "dependencies": {
+    "resolve-git-remote": "~0.1.1",
+    "resolve-git-branch": "~0.1.0",
+    "asyncreduce": "~0.1.4"
+  },
   "devDependencies": {
     "nave": "~0.4.3",
     "tap": "~0.4.3",
