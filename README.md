@@ -1,4 +1,4 @@
-# jsdoc-githubify [![build status](https://secure.travis-ci.org/thlorenz/jsdoc-githubify.png)](http://travis-ci.org/thlorenz/jsdoc-githubify)
+# jsdoc-githubify [![build status](https://secure.travis-ci.org/thlorenz/jsdoc-githubify.png?branch=master)](http://travis-ci.org/thlorenz/jsdoc-githubify)
 
 A transform that adapts html files generated with jsdoc to be rendered in a github wiki or readme.
 
