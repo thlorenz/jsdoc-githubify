@@ -5,30 +5,31 @@ var test = require('tap').test
   , applyTransform = require('apply-transform')
   , transform = require('../')
 
-var html = [
-    '<article>'
-  , '  <div class="container-overview">'
-  , '  <div class="description"><p>Public wicked API</p></div>'
-  , '    <dl class="details">'
-  , '        <dt class="tag-source">Source:</dt>'
-  , '        <dd class="tag-source"><ul class="dummy"><li>'
-  , '            util/helper.js, line 3'
-  , '        </li></ul></dd>'
-  , '    </dl>'
-  , '    <dl class="details">'
-  , '        <dt class="tag-source">Source:</dt>'
-  , '        <dd class="tag-source"><ul class="dummy"><li>'
-  , '            index.js, line 30'
-  , '        </li></ul></dd>'
-  , '    </dl>'
-  , '  </div>'
-  , ' </article>'].join('\n');
 
 function inspect(obj, depth) {
   console.error(require('util').inspect(obj, false, depth || 5, true));
 }
 
 test('\nhtml with multiple links without repo or branch override', function (t) {
+  var html = [
+      '<article>'
+    , '  <div class="container-overview">'
+    , '  <div class="description"><p>Public wicked API</p></div>'
+    , '    <dl class="details">'
+    , '        <dt class="tag-source">Source:</dt>'
+    , '        <dd class="tag-source"><ul class="dummy"><li>'
+    , '            util/helper.js, line 3'
+    , '        </li></ul></dd>'
+    , '    </dl>'
+    , '    <dl class="details">'
+    , '        <dt class="tag-source">Source:</dt>'
+    , '        <dd class="tag-source"><ul class="dummy"><li>'
+    , '            index.js, line 30'
+    , '        </li></ul></dd>'
+    , '    </dl>'
+    , '  </div>'
+    , ' </article>'].join('\n');
+
   applyTransform(transform(), html, function (err, res) {
     if (err) { t.fail(err); return t.end() } 
 
@@ -74,6 +75,24 @@ test('\nwicked api page with multiple links without repo or branch override', fu
   applyTransform(transform(), html, function (err, res) {
     if (err) { t.fail(err); return t.end() } 
     t.equal(res, adapted, 'fixes all links, pulls out main div and trims html')
+    t.end()
+  })
+})
+
+
+
+test('\ngiven html without any API declaration, i.e. an index page', function (t) {
+  var html = [
+      '<body>'
+    , '  <div id="main">'
+    , '    <h1 class="page-title">Index</h1>'
+    , '    <h3> </h3>'
+    , '  </div>'
+    , '</body>'].join('\n')
+
+  applyTransform(transform(), html, function (err, res) {
+    if (err) { t.fail(err); return t.end() } 
+    t.equal(res, '', 'returns empty string to signal that the document had no API') 
     t.end()
   })
 })

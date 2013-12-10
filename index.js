@@ -29,6 +29,8 @@ GitifyTransform.prototype._transform = function (chunk, encoding, cb) {
 GitifyTransform.prototype._flush = function (cb) {
   var self = this;
 
+  // if the document contains no API doc we filter it by transforming to empty string
+  if (!adaptHtml.hasApi(self.original)) return cb();
 
   adaptHtml(self.original, function (err, html) {
     if (err) return cb(err);

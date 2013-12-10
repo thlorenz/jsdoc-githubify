@@ -15,7 +15,7 @@ var html = [
   , '                                       '
   , '                                       '
   , '                                       '
-  , '<dl class="details"></dl></div>'].join('\n');
+  , '<dl class="details"><dt class="tag-source">...</dt</dl></div>'].join('\n');
 
 function inspect(obj, depth) {
   console.error(require('util').inspect(obj, false, depth || 5, true));
@@ -29,7 +29,7 @@ test('\ntransforming html with empty lines and leading white spaces', function (
       , [ '<div class="jsdoc-githubify">',
           '<div class="container-overview">',
           '<div class="description"><p>Public wicked API</p></div>',
-          '<dl class="details"></dl></div>',
+          '<dl class="details"><dt class="tag-source">...</dt></dl></div>',
           '</div>' ]
 
       , 'trims leading spaces and removes empty lines'
