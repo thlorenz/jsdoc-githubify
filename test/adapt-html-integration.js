@@ -34,7 +34,8 @@ test('\nhtml with multiple links without repo or branch override', function (t) 
 
     t.deepEqual(
         res.split('\n')
-      , [ '<article>',
+      , [ '<div class="jsdoc-githubify">',
+          '<article>',
           '<div class="container-overview">',
           '<div class="description"><p>Public wicked API</p></div>',
           '<dl class="details">',
@@ -58,7 +59,8 @@ test('\nhtml with multiple links without repo or branch override', function (t) 
           '</ul></dd>',
           '</dl>',
           '</div>',
-          '</article>' ]
+          '</article>',
+          '</div>' ]
       , 'links get replaced to point at repo blobs for current branch'
     )
     t.end()

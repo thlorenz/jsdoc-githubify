@@ -20,14 +20,18 @@ var html = [
 function inspect(obj, depth) {
   console.error(require('util').inspect(obj, false, depth || 5, true));
 }
+
 test('\ntransforming html with empty lines and leading white spaces', function (t) {
   applyTransform(transform(), html, function (err, res) {
     if (err) { t.fail(err); return t.end() } 
     t.deepEqual(
         res.split('\n')
-      , [ '<div class="container-overview">',
+      , [ '<div class="jsdoc-githubify">',
+          '<div class="container-overview">',
           '<div class="description"><p>Public wicked API</p></div>',
-          '<dl class="details"></dl></div>' ]
+          '<dl class="details"></dl></div>',
+          '</div>' ]
+
       , 'trims leading spaces and removes empty lines'
     )
     t.end()      
