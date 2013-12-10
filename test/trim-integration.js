@@ -23,15 +23,13 @@ function inspect(obj, depth) {
 test('\ntransforming html with empty lines and leading white spaces', function (t) {
   applyTransform(transform(), html, function (err, res) {
     if (err) { t.fail(err); return t.end() } 
-    // TODO:
-    inspect(res.split('\n'));
-    /*t.deepEqual(
+    t.deepEqual(
         res.split('\n')
       , [ '<div class="container-overview">',
           '<div class="description"><p>Public wicked API</p></div>',
-          '<dl class="details">' ]
+          '<dl class="details"></dl></div>' ]
       , 'trims leading spaces and removes empty lines'
-    )*/
+    )
     t.end()      
   });
 })
