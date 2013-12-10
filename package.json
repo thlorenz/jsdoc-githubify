@@ -1,6 +1,6 @@
 {
   "name": "jsdoc-githubify",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A transform that adapts html files generated with jsdoc to be rendered in a github wiki or readme.",
   "main": "index.js",
   "scripts": {
