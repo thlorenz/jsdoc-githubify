@@ -27,7 +27,7 @@
     "tap": "~0.4.3",
     "apply-transform": "~0.1.0"
   },
-  "keywords": [],
+  "keywords": [ "jsdoc", "transform", "github", "readme", "wiki", "html", "markdown", "mutiny" ],
   "author": {
     "name": "Thorsten Lorenz",
     "email": "thlorenz@gmx.de",
