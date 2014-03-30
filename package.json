@@ -48,5 +48,8 @@
   },
   "engine": {
     "node": ">=0.6"
+  },
+  "peerDependencies": {
+    "jsdoc": "3.3.0-alpha2"
   }
 }
